@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note/pages/main_page/add_page/add_page.dart';
+import 'package:note/pages/main_page/note_widget.dart';
 
 class Mainpage extends StatelessWidget {
   @override
@@ -7,30 +9,20 @@ class Mainpage extends StatelessWidget {
       appBar: AppBar(
         title: Text('My Notes'),
       ),
-      body: Container(
-        height: 150,
-        width: 150,
-        
-         child: Card(
-           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ListTile(
-                title: Text('title'),
-                subtitle: Text('content'),
-              ),
-              Expanded(child: Container()),
-              Padding(
-                child: Text('yyyy-mm-dd'),
-                padding: EdgeInsets.only(left: 15, bottom: 10),
-                
-
-              )
-              
-            ],
-          ),
-      ),
+      body: NoteWidget(),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return Addpage();
+              },
+            ),
+          );
+        },
+        backgroundColor: Color.fromRGBO(225, 0, 225, 1),
       ),
     );
   }
