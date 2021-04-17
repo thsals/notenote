@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:note/pages/main_page/add_page/add_page.dart';
+import 'package:note/pages/main_page/note_grid.dart';
 import 'package:note/pages/main_page/note_widget.dart';
 
-class Mainpage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('My Notes'),
       ),
-      body: NoteWidget(),
+      body: NotesGrid(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          await Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) {
@@ -21,6 +27,7 @@ class Mainpage extends StatelessWidget {
               },
             ),
           );
+          setState(() {});
         },
         backgroundColor: Color.fromRGBO(225, 0, 225, 1),
       ),
